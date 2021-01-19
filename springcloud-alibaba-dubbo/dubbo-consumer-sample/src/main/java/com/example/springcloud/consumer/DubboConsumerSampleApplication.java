@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DubboConsumerSampleApplication {
 
 
-    @Reference
+    @DubboReference
     private ApiService echoService;
 
     @GetMapping("/echo")

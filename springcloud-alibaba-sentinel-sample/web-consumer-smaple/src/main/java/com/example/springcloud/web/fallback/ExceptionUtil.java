@@ -17,12 +17,12 @@ public class ExceptionUtil {
 
     public static ClientHttpResponse handleException(HttpRequest request, byte[] body, ClientHttpRequestExecution execution, BlockException exception) {
         logger.info("Oops: {}" , exception.getClass().getCanonicalName());
-        return new SentinelClientHttpResponse("custom block info");
+        return new SentinelClientHttpResponse(String.format("custom block info!Oops:%s", exception.getClass().getCanonicalName()));
     }
 
     public static SentinelClientHttpResponse fallback(HttpRequest request,
                                                       byte[] body, ClientHttpRequestExecution execution, BlockException ex) {
         logger.info("fallback:{} " , ex.getClass().getCanonicalName());
-        return new SentinelClientHttpResponse("custom fallback info");
+        return new SentinelClientHttpResponse(String.format("custom fallback info! fallback:%s", ex.getClass().getCanonicalName()));
     }
 }

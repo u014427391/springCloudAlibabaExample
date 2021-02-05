@@ -5,7 +5,7 @@
     <groupId>com.example.springcloud</groupId>
     <artifactId>dubbo-provider-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dubbo-provider-sample</name>
+    <name>nacos-sentinel-provider-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -36,6 +36,12 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-apache-dubbo-adapter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example.api</groupId>
+            <artifactId>smaple-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

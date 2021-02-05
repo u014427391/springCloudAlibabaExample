@@ -5,7 +5,7 @@
     <groupId>com.example.api</groupId>
     <artifactId>smaple-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>smaple-api</name>
+    <name>nacos-sentinel-smaple-api</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

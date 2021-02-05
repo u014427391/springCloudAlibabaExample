@@ -21,7 +21,7 @@ public class FooServiceImpl implements FooService {
     public String echo(String str, boolean slow) {
         if (slow) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(3000);
             } catch (InterruptedException ignored) {
             }
         }

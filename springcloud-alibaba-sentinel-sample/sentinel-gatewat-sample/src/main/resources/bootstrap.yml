@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # route id转为小写
+          lower-case-service-id: true
+      routes:
+      # 根据Path路径路由
+      - id: sentinel-gatewat-sample # 配置路由id
+        uri: http://127.0.0.1:9091/api/demo/  # 路由到的地址
+        predicates:
+        - Path=/api/demo/** # 设置谓词，路径匹配的进行路由

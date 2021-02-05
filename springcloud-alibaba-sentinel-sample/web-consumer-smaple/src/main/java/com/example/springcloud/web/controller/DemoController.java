@@ -1,5 +1,7 @@
 package com.example.springcloud.web.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.api.smapleapi.service.FooService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +25,16 @@ public class DemoController {
     private FooService fooService;
 
     @GetMapping(value = "/echo")
+    @SentinelResource(value = "DemoService#echo" , defaultFallback = "sentinelFallback")
     public String echo(@RequestParam(value = "str", required = true) String str, @RequestParam(value = "slow",defaultValue = "false", required = false)Boolean slow) {
         return fooService.echo(str , slow);
+    }
+
+    public String sentinelFallback(Throwable t){
+        if (BlockException.isBlockException(t)) {
+            return String.format("Block by sentinel:%s", t.getClass().getSimpleName());
+        }
+        return String.format("snetinal fallback method , Oops failed : %s", t.getClass().getCanonicalName());
     }
 
 }
